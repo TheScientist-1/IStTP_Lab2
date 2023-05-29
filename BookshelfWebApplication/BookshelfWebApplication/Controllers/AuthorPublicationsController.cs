@@ -107,20 +107,47 @@ namespace BookshelfWebApplication.Controllers
             return NoContent();
         }
 
-        // POST: api/AuthorPublications
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //// POST: api/AuthorPublications
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost]
+        //public async Task<ActionResult<AuthorPublication>> PostAuthorPublication(AuthorPublication authorPublication)
+        //{
+        //  if (_context.AuthorPublicationss == null)
+        //  {
+        //      return Problem("Entity set 'BookshelfAPIContext.AuthorPublicationss'  is null.");
+        //  }
+        //    _context.AuthorPublicationss.Add(authorPublication);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetAuthorPublication", new { id = authorPublication.Id }, authorPublication);
+        //}
         [HttpPost]
-        public async Task<ActionResult<AuthorPublication>> PostAuthorPublication(AuthorPublication authorPublication)
+        public async Task<ActionResult<AuthorPublication>> PostAuthorPublication(int publicationId, int authorId)
         {
-          if (_context.AuthorPublicationss == null)
-          {
-              return Problem("Entity set 'BookshelfAPIContext.AuthorPublicationss'  is null.");
-          }
+            
+            var publication = await _context.Publications.FirstOrDefaultAsync(p => p.Id == publicationId);
+            var author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == authorId);
+
+            if (publication == null || author == null)
+            {
+                return NotFound("Publication or Author not found.");
+            }
+
+            var authorPublication = new AuthorPublication
+            {
+                PublicationId = publicationId,
+                AuthorId = authorId,
+                Publication = publication,
+                Author = author
+            };
+
             _context.AuthorPublicationss.Add(authorPublication);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAuthorPublication", new { id = authorPublication.Id }, authorPublication);
         }
+
+
 
         // DELETE: api/AuthorPublications/5
         [HttpDelete("{id}")]

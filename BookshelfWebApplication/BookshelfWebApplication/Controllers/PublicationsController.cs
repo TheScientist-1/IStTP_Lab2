@@ -113,14 +113,19 @@ namespace BookshelfWebApplication.Controllers
         [HttpPost]
         public async Task<ActionResult<Publication>> PostPublication(Publication publication)
         {
-          if (_context.Publications == null)
+          var options = new JsonSerializerOptions
           {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                
+          };
+            if (_context.Publications == null)
+            {
               return Problem("Entity set 'BookshelfAPIContext.Publications'  is null.");
-          }
+            }
             _context.Publications.Add(publication);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction("GetPublication", new { id = publication.Id }, publication);
+
         }
 
         // DELETE: api/Publications/5

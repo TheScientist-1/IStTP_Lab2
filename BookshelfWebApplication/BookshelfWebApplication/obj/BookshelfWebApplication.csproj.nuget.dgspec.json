@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\BookshelfWebApplication.csproj": {}
+    "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\IStTP_Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\BookshelfWebApplication.csproj": {}
   },
   "projects": {
-    "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\BookshelfWebApplication.csproj": {
+    "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\IStTP_Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\BookshelfWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\BookshelfWebApplication.csproj",
+        "projectUniqueName": "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\IStTP_Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\BookshelfWebApplication.csproj",
         "projectName": "BookshelfWebApplication",
-        "projectPath": "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\BookshelfWebApplication.csproj",
+        "projectPath": "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\IStTP_Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\BookshelfWebApplication.csproj",
         "packagesPath": "C:\\Users\\m\\.nuget\\packages\\",
-        "outputPath": "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\obj\\",
+        "outputPath": "D:\\ФКНК\\2 курс\\4 семестр\\ІС\\Lab\\Lab2\\IStTP_Lab2\\BookshelfWebApplication\\BookshelfWebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

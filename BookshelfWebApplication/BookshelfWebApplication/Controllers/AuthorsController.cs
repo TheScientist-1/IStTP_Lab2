@@ -80,6 +80,10 @@ namespace BookshelfWebApplication.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAuthor(int id, Author author)
         {
+            if (author == null)
+            {
+                return BadRequest("Invalid authors data");
+            }
             if (id != author.Id)
             {
                 return BadRequest();

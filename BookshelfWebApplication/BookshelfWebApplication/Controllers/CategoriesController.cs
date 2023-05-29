@@ -44,7 +44,7 @@ namespace BookshelfWebApplication.Controllers
                         c.Id,
                         c.Name,
                         c.Description,
-                        Publications = c.Publications.Select(b => b.Title) // Вибираємо перелік назв книг
+                        
                     })
                     .ToListAsync();
 
@@ -53,6 +53,27 @@ namespace BookshelfWebApplication.Controllers
 
                 return Content(json, "application/json");
             }
+        }
+
+        // GET: api/Categories
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategories11()
+        {
+            if (_context.Categories == null)
+            {
+                return NotFound();
+            }
+
+            var categories = await _context.Categories
+                .Select(c => new Category
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Description = c.Description
+                })
+                .ToListAsync();
+
+            return categories;
         }
 
         // GET: api/Categories/5
@@ -106,18 +127,37 @@ namespace BookshelfWebApplication.Controllers
 
         // POST: api/Categories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost]
+        //public async Task<ActionResult<Category>> PostCategory(Category category)
+        //{
+        //  if (_context.Categories == null)
+        //  {
+        //      return Problem("Entity set 'BookshelfAPIContext.Categories'  is null.");
+        //  }
+        //    _context.Categories.Add(category);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+        //}
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Category>> PostCategory([FromBody] Category category)
         {
-          if (_context.Categories == null)
-          {
-              return Problem("Entity set 'BookshelfAPIContext.Categories'  is null.");
-          }
+            if (category == null)
+            {
+                return BadRequest("Invalid category data");
+            }
+
+            if (_context.Categories == null)
+            {
+                return Problem("Entity set 'BookshelfAPIContext.Categories'  is null.");
+            }
+
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCategory", new { id = category.Id }, category);
         }
+
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
